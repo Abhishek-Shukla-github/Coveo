@@ -280,42 +280,118 @@
 
         <atomic-result-template must-match-sourcetype="YouTube">
           <template>
-            <atomic-field-condition must-match-is-top-result="false">
-              <atomic-result-badge label="Top Result"></atomic-result-badge>
-            </atomic-field-condition>
+            <style>
+              .custom-field {
+                display: inline-flex;
+                align-items: center;
+              }
 
-              <span class="field">
-                <span class="field-label">Date:</span>
-                <atomic-result-date></atomic-result-date>
-              </span>
-              
-              <atomic-result-section-title>
-                <atomic-result-link></atomic-result-link>
-              </atomic-result-section-title>
+              .custom-field-label {
+                font-weight: bold;
+                margin-right: 0.25rem;
+              }
 
-              <atomic-result-section-visual>
-                <atomic-result-image fallback="https://miro.medium.com/v2/resize:fit:1200/1*-EpsqHbxWA2oDr-8wt5ogQ.jpeg"
-                    field="ytthumbnailurl"></atomic-result-image>
-              </atomic-result-section-visual>
+              .custom-date-featured{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
 
-              <atomic-result-section-excerpt>
-                <atomic-result-text field="excerpt"></atomic-result-text>
-              </atomic-result-section-excerpt>
+              .custom-template-body{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              }
 
+              .custom-visual{
+                width: 25%;
+                height: 50%;
+              }
 
-              <atomic-result-text field="ytvideoduration"></atomic-result-text>
-              <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
-              <atomic-result-text field="@ytvideoduration"></atomic-result-text>
+              .custom-info{
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                color: #626971;
+              }
 
-              <atomic-field-condition class="field" if-defined="ytvideoduration">
-                <span class="field-label">
-                  <atomic-text value="Length"></atomic-text>:
-                </span>
-                <atomic-result-number field="ytvideoduration" unit="byte">
-                  <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
-                </atomic-result-text>
-              </atomic-field-condition>
-              
+              .custom-info atomic-result-section-title{
+                font-size: 1.125rem;
+                
+              }
+
+              .custom-visual img {
+                border-radius: 8%;
+              }
+
+            </style>
+              <section class="custom-date-featured">
+                <section>
+                  <atomic-field-condition must-match-is-top-result="true">
+                    <atomic-result-badge label="Top Result"></atomic-result-badge>
+                  </atomic-field-condition>
+                </section>
+    
+                  <span class="custom-field">
+                    <span class="custom-field-label">Date:</span>
+                    <atomic-result-date></atomic-result-date>
+                  </span>
+              </section>
+              <section class="custom-template-body">
+                
+                <div class="custom-info">
+                  <div>
+                    <atomic-result-section-title>
+                      <atomic-result-link></atomic-result-link>
+                    </atomic-result-section-title>
+                  </div>
+                  <div>
+                    <atomic-result-section-excerpt>
+                      <atomic-result-text field="excerpt"></atomic-result-text>
+                    </atomic-result-section-excerpt>
+                  </div>
+                  <section class="length-duration-section">
+                    <!-- <atomic-result-text field="@ytvideoduration"></atomic-result-text> -->
+                    <section class="custom-duration">
+                      <atomic-field-condition class="field" if-defined="ytvideoduration">
+                        <span class="field-label">
+                          <atomic-text value="Length"></atomic-text>:
+                        </span>
+                        <atomic-result-number field="ytvideoduration" unit="byte">
+                          <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
+                        </atomic-result-text>
+                      </atomic-field-condition>
+                    </section>
+                    <section class="custom-uri">
+                      <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
+                    </section>
+                  </section>
+                </div>
+
+                <div class="custom-visual">
+                  <atomic-result-section-visual >
+                    <atomic-result-image fallback="https://miro.medium.com/v2/resize:fit:1200/1*-EpsqHbxWA2oDr-8wt5ogQ.jpeg"
+                        field="ytthumbnailurl"></atomic-result-image>
+                  </atomic-result-section-visual>
+                </div>
+  
+                
+              </section>
+
+              <!-- <section class="length-duration-section">
+                <atomic-result-text field="ytvideoduration"></atomic-result-text>
+                <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
+                <atomic-result-text field="@ytvideoduration"></atomic-result-text>
+                <atomic-field-condition class="field" if-defined="ytvideoduration">
+                  <span class="field-label">
+                    <atomic-text value="Length"></atomic-text>:
+                  </span>
+                  <atomic-result-number field="ytvideoduration" unit="byte">
+                    <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
+                  </atomic-result-text>
+                </atomic-field-condition>
+              </section> -->
           </template>
           </atomic-result-template>
 
