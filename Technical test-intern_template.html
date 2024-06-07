@@ -305,7 +305,6 @@
 
               .custom-visual{
                 width: 25%;
-                height: 50%;
               }
 
               .custom-info{
@@ -323,7 +322,44 @@
 
               .custom-visual img {
                 border-radius: 8%;
+                object-fit: fill;
               }
+              .length-duration-section atomic-text{
+                font-weight: 700;
+              }
+
+              @media (max-width: 853px) {
+                .custom-visual{
+                  width: 30%;
+                }
+                .custom-info{
+                  width: 65%;
+                }
+                .custom-info .custom-excerpt{
+                  margin-top: 10px;
+                }
+                .length-duration-section{
+                  margin-top: 10px;
+                }
+              }
+
+              @media (max-width: 500px) {
+                .custom-visual{
+                  width: 100%;
+                }
+                .custom-info{
+                  width: 100%;
+                  margin-top: 10px;
+                }
+                .custom-template-body{
+                  flex-direction: column-reverse;
+                }
+                .custom-info atomic-result-section-title{
+                  font-size: 1rem;
+                }
+              }
+
+
 
             </style>
               <section class="custom-date-featured">
@@ -346,7 +382,7 @@
                       <atomic-result-link></atomic-result-link>
                     </atomic-result-section-title>
                   </div>
-                  <div>
+                  <div class="custom-excerpt">
                     <atomic-result-section-excerpt>
                       <atomic-result-text field="excerpt"></atomic-result-text>
                     </atomic-result-section-excerpt>
