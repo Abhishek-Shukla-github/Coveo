@@ -39,7 +39,7 @@
       const searchActions = loadSearchActions(headlessEngine);
 
       const advancedSearchQueryActions = loadAdvancedSearchQueryActions(headlessEngine);
-
+      const searchAnalyticsActions = loadSearchAnalyticsActions(headlessEngine)
       if (!isFilterApplied) {
         const updateAction = advancedSearchQueryActions.updateAdvancedSearchQueries({
           aq:'@year===2022'
@@ -55,8 +55,22 @@
         headlessEngine.dispatch(clearAction);
         document.querySelector('.this-year-button').classList.remove('active');
       }
+      
+      const {logStaticFilterSelect,logStaticFilterDeselect} = loadSearchAnalyticsActions(headlessEngine); 
+      const {executeSearch} = loadSearchActions(headlessEngine);
+      
+      let addFitler = logStaticFilterSelect({ 
+        staticFilterId: 'year',
+        staticFilterValue: '2022'
+      })
 
-      const searchAction = searchActions.executeSearch();
+      let removeFilter = logStaticFilterDeselect({ 
+        staticFilterId: 'year',
+        staticFilterValue: '2022'
+      })
+      
+    const searchAction = searchActions.executeSearch(isFilterApplied ? removeFilter : addFitler);
+
       headlessEngine.dispatch(searchAction);
 
       isFilterApplied = !isFilterApplied;
