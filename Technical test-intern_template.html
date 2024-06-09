@@ -99,6 +99,7 @@
                 border-radius: 8%;
                 object-fit: fill;
               }
+
               .length-duration-section atomic-text{
                 font-weight: 700;
               }
@@ -134,77 +135,73 @@
                 }
               }
 
-
-
             </style>
-              <section class="custom-date-featured">
+              <section class="custom-date-featured" role="region" aria-label="Video Details">
+                <!-- Top Badges -->
                 <section>
-                  <atomic-field-condition must-match-is-top-result="true">
-                    <atomic-result-badge label="Top Result"></atomic-result-badge>
-                  </atomic-field-condition>
+                  <atomic-result-section-badges>
+                    <atomic-field-condition must-match-is-top-result="true">
+                      <atomic-result-badge label="Top Result"></atomic-result-badge>
+                    </atomic-field-condition>
+                    <atomic-field-condition must-match-is-featured="true">
+                      <atomic-result-badge label="Featured"></atomic-result-badge>
+                    </atomic-field-condition>
+                  </atomic-result-section-badges>
                 </section>
-    
+
+                  <!-- Date -->
                   <span class="custom-field">
                     <span class="custom-field-label">Date:</span>
                     <atomic-result-date></atomic-result-date>
                   </span>
               </section>
-              <section class="custom-template-body">
-                
-                <div class="custom-info">
-                  <div>
-                    <atomic-result-section-title>
-                      <atomic-result-link></atomic-result-link>
-                    </atomic-result-section-title>
-                  </div>
+
+              <section class="custom-template-body" role="main" aria-label="Video Content">  
+
+                <!-- Title,Excerpt and Duration -->
+                <section class="custom-info">
+                  <!-- Title -->
+                  <atomic-result-section-title>
+                    <atomic-result-link></atomic-result-link>
+                  </atomic-result-section-title>
+                  <!-- Excerpt -->
                   <div class="custom-excerpt">
                     <atomic-result-section-excerpt>
                       <atomic-result-text field="excerpt"></atomic-result-text>
                     </atomic-result-section-excerpt>
                   </div>
+                  <!-- Duration -->
                   <section class="length-duration-section">
-                    <!-- <atomic-result-text field="@ytvideoduration"></atomic-result-text> -->
-                    <section class="custom-duration">
-                      <atomic-field-condition class="field" if-defined="ytvideoduration">
-                        <span class="field-label">
-                          <atomic-text value="Length"></atomic-text>:
-                        </span>
-                        <atomic-result-number field="ytvideoduration" unit="byte">
-                          <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
-                        </atomic-result-text>
-                      </atomic-field-condition>
-                    </section>
-                    <section class="custom-uri">
-                      <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
-                    </section>
+                    <atomic-result-section-title-metadata>
+                      <!-- <atomic-result-text field="@ytvideoduration"></atomic-result-text> -->
+                      <section class="custom-duration">
+                        <atomic-field-condition class="field" if-defined="ytvideoduration">
+                          <span class="field-label">
+                            <atomic-text value="Length"></atomic-text>:
+                          </span>
+                          <atomic-result-number field="ytvideoduration" unit="second">
+                            <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
+                          </atomic-result-number>
+                        </atomic-field-condition>
+                      </section>
+                      <section class="custom-uri">
+                        <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
+                      </section>
+                    </atomic-result-section-title-metadata>
                   </section>
-                </div>
-
+                </section>
+                
+                <!-- Thumbnail -->
                 <div class="custom-visual">
                   <atomic-result-section-visual >
-                    <atomic-result-image fallback="https://miro.medium.com/v2/resize:fit:1200/1*-EpsqHbxWA2oDr-8wt5ogQ.jpeg"
+                    <atomic-result-image fallback="https://images.clubt.jp/thumbs/39961/448916/1.jpg?v=1685383876.893816"
                         field="ytthumbnailurl"></atomic-result-image>
                   </atomic-result-section-visual>
                 </div>
-  
-                
+              
               </section>
-
-              <!-- <section class="length-duration-section">
-                <atomic-result-text field="ytvideoduration"></atomic-result-text>
-                <atomic-result-printable-uri max-number-of-parts="3"></atomic-result-printable-uri>
-                <atomic-result-text field="@ytvideoduration"></atomic-result-text>
-                <atomic-field-condition class="field" if-defined="ytvideoduration">
-                  <span class="field-label">
-                    <atomic-text value="Length"></atomic-text>:
-                  </span>
-                  <atomic-result-number field="ytvideoduration" unit="byte">
-                    <atomic-format-unit unit="second" unit-display="short"></atomic-format-unit>
-                  </atomic-result-text>
-                </atomic-field-condition>
-              </section> -->
           </template>
-          </atomic-result-template>
+        </atomic-result-template>
 
         <atomic-result-template>
           <template>
